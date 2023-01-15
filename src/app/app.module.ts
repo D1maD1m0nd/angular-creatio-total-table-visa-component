@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {VisaCostComponent} from "./components/VisaCostComponent/VisaCost.component";
 import {VisaCostItemComponent} from "./components/VisaCostItemComponent/VisaCostItem.component";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import {VisaCostItemComponent} from "./components/VisaCostItemComponent/VisaCost
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
