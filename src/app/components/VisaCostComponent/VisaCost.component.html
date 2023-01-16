@@ -1,3 +1,14 @@
-<table>
-
+<table id="visa-cost-item">
+  <th *ngFor="let item of itemsColumns">{{item}}</th>
+  <tr *ngFor="let item of itemCosts">
+    <td>{{item.OwnerName}}</td>
+    <td>{{item.CostItemName}}</td>
+    <td>{{item.GroupCostItemName}}</td>
+    <td>{{item.FilialName}}</td>
+    <td>{{item.FirstQuarterPlanSum}}</td>
+    <td>{{item.SecondQuarterPlanSum}}</td>
+    <td>{{item.ThirdQuarterPlanSum}}</td>
+    <td>{{item.FourthQuarterPlanSum}}</td>
+    <td>{{item.TotalSumPlan}}</td>
+  </tr>
 </table>

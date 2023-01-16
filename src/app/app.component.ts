@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {CostItems} from "./components/data/mock/ItemCosts";
+import {CostItemsColumns} from "./components/data/mock/ItemColumns";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-creatio-total-table-visa-component';
+  itemCosts = CostItems
+  itemColumns = CostItemsColumns
 }
