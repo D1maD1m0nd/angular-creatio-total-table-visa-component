@@ -6,35 +6,35 @@ export const CostItems : ICostItem[] = [
     GroupCostItemName : "Группа затрат" ,
     CostItemName : "Затрата",
     OwnerName : "Василий",
-    BrandName : "Apple",
+    BrandName : "Balicia",
     FirstQuarterPlanSum : 12.323,
     SecondQuarterPlanSum : 43.321,
     ThirdQuarterPlanSum : 12.3232,
     FourthQuarterPlanSum : 44.1222,
-    TotalSumPlan : 12.3232
+    TotalSumPlan : 123
   },
   {
-    FilialName : "Москва",
+    FilialName : "Санкт-петербург",
     GroupCostItemName : "Группа затрат" ,
     CostItemName : "Затрата",
     OwnerName : "Василий",
     BrandName : "Apple",
-    FirstQuarterPlanSum : 12.323,
-    SecondQuarterPlanSum : 43.321,
-    ThirdQuarterPlanSum : 12.3232,
-    FourthQuarterPlanSum : 44.1222,
-    TotalSumPlan : 12.3232
+    FirstQuarterPlanSum : 1,
+    SecondQuarterPlanSum : 2,
+    ThirdQuarterPlanSum : 3,
+    FourthQuarterPlanSum : 4,
+    TotalSumPlan : 122
   },
   {
-    FilialName : "Москва",
+    FilialName : "Уфа",
     GroupCostItemName : "Группа затрат" ,
     CostItemName : "Затрата",
     OwnerName : "Василий",
-    BrandName : "Apple",
-    FirstQuarterPlanSum : 12.323,
-    SecondQuarterPlanSum : 43.321,
-    ThirdQuarterPlanSum : 12.3232,
-    FourthQuarterPlanSum : 44.1222,
-    TotalSumPlan : 12.3232
+    BrandName : "Macauto",
+    FirstQuarterPlanSum : 12,
+    SecondQuarterPlanSum : 49,
+    ThirdQuarterPlanSum : 122,
+    FourthQuarterPlanSum : 44,
+    TotalSumPlan : 121
   },
 ]

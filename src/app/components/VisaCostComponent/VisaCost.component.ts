@@ -1,6 +1,9 @@
 import {Component, Input} from "@angular/core";
 import {ICostItem} from "../data/model/ItemCost";
 import {Sort} from '@angular/material/sort';
+import {CostItemsColumns} from "../data/mock/ItemColumns";
+import {CostItems} from "../data/mock/ItemCosts";
+import {ICostColumn} from "../data/model/CostColumn";
 
 @Component({
     selector: 'app-visa-cost',
@@ -9,8 +12,8 @@ import {Sort} from '@angular/material/sort';
   }
 )
 export class VisaCostComponent {
-  @Input() itemsColumns : string[]
-  @Input() itemCosts: ICostItem[]
+  itemsColumns : ICostColumn[] = CostItemsColumns
+  itemCosts: ICostItem[] = CostItems
   sortedDataItemCosts : ICostItem[]
 
   constructor() {
@@ -26,21 +29,21 @@ export class VisaCostComponent {
 
     this.sortedDataItemCosts = data.sort((a, b) => {
       const isAsc = sort.direction === 'asc';
-      // switch (sort.active) {
-      //   case 'name':
-      //     return compare(a.name, b.name, isAsc);
-      //   case 'calories':
-      //     return compare(a.calories, b.calories, isAsc);
-      //   case 'fat':
-      //     return compare(a.fat, b.fat, isAsc);
-      //   case 'carbs':
-      //     return compare(a.carbs, b.carbs, isAsc);
-      //   case 'protein':
-      //     return compare(a.protein, b.protein, isAsc);
-      //   default:
-      //     return 0;
-      // }
-      return 0
+      switch (sort.active) {
+        case "TotalSumPlan":
+        case "FourthQuarterPlanSum":
+        case "ThirdQuarterPlanSum":
+        case 'SecondQuarterPlanSum':
+        case "FirstQuarterPlanSum":
+        case 'BrandName':
+        case "OwnerName":
+        case 'CostItemName':
+        case "GroupCostItemName":
+        case 'FilialName':
+          return compare(a[sort.active], b[sort.active], isAsc);
+        default:
+          return 0;
+      }
     });
   }
 }

@@ -1,12 +1,13 @@
-<table matSort id="visa-cost-item" >
-  <th *ngFor="let item of itemsColumns">
-    {{item}}
+<table matSort (matSortChange)="sortData($event)" id="visa-cost-item" >
+  <th *ngFor="let item of itemsColumns"  mat-sort-header={{item.ItemCostKey}}>
+    {{item.Name}}
   </th>
-  <tr *ngFor="let item of itemCosts">
+  <tr *ngFor="let item of sortedDataItemCosts">
     <td>{{item.OwnerName}}</td>
     <td>{{item.CostItemName}}</td>
     <td>{{item.GroupCostItemName}}</td>
     <td>{{item.FilialName}}</td>
+    <td>{{item.BrandName}}</td>
     <td>{{item.FirstQuarterPlanSum}}</td>
     <td>{{item.SecondQuarterPlanSum}}</td>
     <td>{{item.ThirdQuarterPlanSum}}</td>
