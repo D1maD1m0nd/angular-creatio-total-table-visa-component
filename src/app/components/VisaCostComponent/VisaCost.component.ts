@@ -19,7 +19,9 @@ export class VisaCostComponent {
   constructor() {
     this.sortedDataItemCosts = this.itemCosts.slice();
   }
-
+  changeTotalSumPlan(value: number, item : ICostItem) {
+    item.TotalSumPlan = value
+  }
   sortData(sort: Sort) {
     const data = this.itemCosts.slice();
     if (!sort.active || sort.direction === '') {

@@ -12,6 +12,6 @@
     <td>{{item.SecondQuarterPlanSum}}</td>
     <td>{{item.ThirdQuarterPlanSum}}</td>
     <td>{{item.FourthQuarterPlanSum}}</td>
-    <td><app-edit-numeric [value]=item.TotalSumPlan></app-edit-numeric></td>
+    <td><app-edit-numeric [value]=item.TotalSumPlan (outValue)="changeTotalSumPlan($event, item)"></app-edit-numeric></td>
   </tr>
 </table>
