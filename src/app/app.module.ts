@@ -7,11 +7,13 @@ import {VisaCostComponent} from "./components/VisaCostComponent/VisaCost.compone
 import {HttpClientModule} from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSortModule } from '@angular/material/sort';
+import { EditNumericComponent } from './components/edit-numeric/edit-numeric.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    VisaCostComponent
+    VisaCostComponent,
+    EditNumericComponent
   ],
   imports: [
     BrowserModule,
