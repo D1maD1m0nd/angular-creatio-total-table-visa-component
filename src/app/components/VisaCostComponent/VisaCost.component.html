@@ -15,7 +15,13 @@
       mat-sort-header={{column.ItemCostKey}}>
       {{ column.Name }}
     </mat-header-cell>
-    <mat-cell *matCellDef="let element">{{ element[column.ItemCostKey] }}</mat-cell>
+    <mat-cell *matCellDef="let element">
+      <app-edit-numeric *ngIf="column.ItemCostKey === 'TotalSumPlan';
+                        else elseBlock"
+                        [value]="element[column.ItemCostKey]"
+                        (outValue)="changeTotalSumPlan($event, element[column.ItemCostKey])"></app-edit-numeric>
+      <ng-template #elseBlock>{{ element[column.ItemCostKey]}}</ng-template>
+    </mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayColumns"
