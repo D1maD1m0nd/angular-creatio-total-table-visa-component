@@ -1,17 +1,43 @@
-<table matSort (matSortChange)="sortData($event)" id="visa-cost-item" >
-  <th *ngFor="let item of itemsColumns"  mat-sort-header={{item.ItemCostKey}}>
-    {{item.Name}}
-  </th>
-  <tr *ngFor="let item of sortedDataItemCosts">
-    <td>{{item.OwnerName}}</td>
-    <td>{{item.CostItemName}}</td>
-    <td>{{item.GroupCostItemName}}</td>
-    <td>{{item.FilialName}}</td>
-    <td>{{item.BrandName}}</td>
-    <td>{{item.FirstQuarterPlanSum}}</td>
-    <td>{{item.SecondQuarterPlanSum}}</td>
-    <td>{{item.ThirdQuarterPlanSum}}</td>
-    <td>{{item.FourthQuarterPlanSum}}</td>
-    <td><app-edit-numeric [value]=item.TotalSumPlan (outValue)="changeTotalSumPlan($event, item)"></app-edit-numeric></td>
-  </tr>
-</table>
+<mat-table
+  matSort
+  cdkDropList
+  cdkDropListOrientation="horizontal"
+  [dataSource]="sortedDataItemCosts"
+  (matSortChange)="sortData($event)" id="visa-cost-item"
+  (cdkDropListDropped)="tableDrop($event)">
+
+  <ng-container *ngFor="let column of itemsColumns; let i = index"
+                [matColumnDef]="column.ItemCostKey">
+    <mat-header-cell
+      *matHeaderCellDef
+      cdkDrag
+      cdkDragLockAxis="x"
+      mat-sort-header={{column.ItemCostKey}}>
+      {{ column.Name }}
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element[column.ItemCostKey] }}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayColumns"
+                  class="tableHeaderRow"
+                  #tableHeaderRow></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayColumns;"></mat-row>
+
+<!--  <th *ngFor="let item of itemsColumns"  mat-sort-header={{item.ItemCostKey}}>-->
+<!--    {{item.Name}}-->
+<!--  </th>-->
+<!--  <tr *ngFor="let item of sortedDataItemCosts">-->
+<!--    <td>{{item.OwnerName}}</td>-->
+<!--    <td>{{item.CostItemName}}</td>-->
+<!--    <td>{{item.GroupCostItemName}}</td>-->
+<!--    <td>{{item.FilialName}}</td>-->
+<!--    <td>{{item.BrandName}}</td>-->
+<!--    <td>{{item.FirstQuarterPlanSum}}</td>-->
+<!--    <td>{{item.SecondQuarterPlanSum}}</td>-->
+<!--    <td>{{item.ThirdQuarterPlanSum}}</td>-->
+<!--    <td>{{item.FourthQuarterPlanSum}}</td>-->
+<!--    <td><app-edit-numeric [value]=item.TotalSumPlan (outValue)="changeTotalSumPlan($event, item)">-->
+<!--    </app-edit-numeric></td>-->
+<!--  </tr>-->
+</mat-table>
+

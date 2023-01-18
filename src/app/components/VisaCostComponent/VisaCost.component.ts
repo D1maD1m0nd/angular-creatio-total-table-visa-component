@@ -4,6 +4,7 @@ import {Sort} from '@angular/material/sort';
 import {CostItemsColumns} from "../data/mock/ItemColumns";
 import {CostItems} from "../data/mock/ItemCosts";
 import {ICostColumn} from "../data/model/CostColumn";
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Component({
     selector: 'app-visa-cost',
@@ -13,6 +14,7 @@ import {ICostColumn} from "../data/model/CostColumn";
 )
 export class VisaCostComponent {
   itemsColumns : ICostColumn[] = CostItemsColumns
+  displayColumns : string[] = this.itemsColumns.map((i) => i.ItemCostKey)
   itemCosts: ICostItem[] = CostItems
   sortedDataItemCosts : ICostItem[]
 
@@ -47,6 +49,9 @@ export class VisaCostComponent {
           return 0;
       }
     });
+  }
+  tableDrop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.displayColumns, event.previousIndex, event.currentIndex);
   }
 }
 function compare(a: number | string, b: number | string, isAsc: boolean) {
