@@ -10,14 +10,15 @@ import { EditNumericComponent } from './components/edit-numeric/edit-numeric.com
 import {ɵEmptyOutletComponent} from "@angular/router";
 import {MatTableModule} from "@angular/material/table";
 import {DragDropModule} from "@angular/cdk/drag-drop";
-import { FilteredcolumnsComponent } from './components/filteredcolumns/filteredcolumns.component';
+import {FilteredColumnsComponent} from "./components/filteredcolumns/filteredcolumns.component";
+
 
 @NgModule({
   declarations: [
     AppComponent,
     VisaCostComponent,
     EditNumericComponent,
-    FilteredcolumnsComponent
+    FilteredColumnsComponent
   ],
   imports: [
     BrowserModule,

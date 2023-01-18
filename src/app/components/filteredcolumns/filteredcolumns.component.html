@@ -1,1 +1,4 @@
-<p>filteredcolumns works!</p>
+<div class="item">
+  <input [id]="column.ItemCostKey" type="checkbox" (change)="column.Checked = !column.Checked" [checked]="column.Checked" />
+  <label [for]="column.ItemCostKey">{{column.Name}}</label>
+</div>
