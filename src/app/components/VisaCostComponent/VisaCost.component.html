@@ -1,49 +1,34 @@
 <mat-table
-  matSort
-  cdkDropList
-  cdkDropListOrientation="horizontal"
-  [dataSource]="sortedDataItemCosts"
-  (matSortChange)="sortData($event)" id="visa-cost-item"
-  (cdkDropListDropped)="tableDrop($event)">
+    matSort
+    cdkDropList
+    cdkDropListOrientation="horizontal"
+    [dataSource]="sortedDataItemCosts"
+    (matSortChange)="sortData($event)" id="visa-cost-item"
+    (cdkDropListDropped)="tableDrop($event)">
 
-  <ng-container *ngFor="let column of itemsColumns; let i = index"
-                [matColumnDef]="column.ItemCostKey">
-    <mat-header-cell
-      *matHeaderCellDef
-      cdkDrag
-      cdkDragLockAxis="x"
-      mat-sort-header={{column.ItemCostKey}}>
-      {{ column.Name }}
-    </mat-header-cell>
-    <mat-cell *matCellDef="let element">
-      <app-edit-numeric *ngIf="column.ItemCostKey === 'TotalSumPlan';
+    <ng-container *ngFor="let column of itemsColumns; let i = index"
+                  [matColumnDef]="column.ItemCostKey">
+        <ng-container *ngIf="column.Visible">
+            <mat-header-cell
+                *matHeaderCellDef
+                cdkDrag
+                cdkDragLockAxis="x"
+                mat-sort-header={{column.ItemCostKey}}>
+                {{ column.Name }}
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <app-edit-numeric *ngIf="column.ItemCostKey === 'TotalSumPlan';
                         else elseBlock"
-                        [value]="element[column.ItemCostKey]"
-                        (outValue)="changeTotalSumPlan($event, element[column.ItemCostKey])"></app-edit-numeric>
-      <ng-template #elseBlock>{{ element[column.ItemCostKey]}}</ng-template>
-    </mat-cell>
-  </ng-container>
+                                  [value]="element[column.ItemCostKey]"
+                                  (outValue)="changeTotalSumPlan($event, element[column.ItemCostKey])"></app-edit-numeric>
+                <ng-template #elseBlock>{{ element[column.ItemCostKey]}}</ng-template>
+            </mat-cell>
+        </ng-container>
+    </ng-container>
 
-  <mat-header-row *matHeaderRowDef="displayColumns"
-                  class="tableHeaderRow"
-                  #tableHeaderRow></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayColumns;"></mat-row>
-
-<!--  <th *ngFor="let item of itemsColumns"  mat-sort-header={{item.ItemCostKey}}>-->
-<!--    {{item.Name}}-->
-<!--  </th>-->
-<!--  <tr *ngFor="let item of sortedDataItemCosts">-->
-<!--    <td>{{item.OwnerName}}</td>-->
-<!--    <td>{{item.CostItemName}}</td>-->
-<!--    <td>{{item.GroupCostItemName}}</td>-->
-<!--    <td>{{item.FilialName}}</td>-->
-<!--    <td>{{item.BrandName}}</td>-->
-<!--    <td>{{item.FirstQuarterPlanSum}}</td>-->
-<!--    <td>{{item.SecondQuarterPlanSum}}</td>-->
-<!--    <td>{{item.ThirdQuarterPlanSum}}</td>-->
-<!--    <td>{{item.FourthQuarterPlanSum}}</td>-->
-<!--    <td><app-edit-numeric [value]=item.TotalSumPlan (outValue)="changeTotalSumPlan($event, item)">-->
-<!--    </app-edit-numeric></td>-->
-<!--  </tr>-->
+    <mat-header-row *matHeaderRowDef="displayColumns"
+                    class="tableHeaderRow"
+                    #tableHeaderRow></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayColumns;"></mat-row>
 </mat-table>
 

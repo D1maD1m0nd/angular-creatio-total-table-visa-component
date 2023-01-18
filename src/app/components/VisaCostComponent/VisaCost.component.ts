@@ -1,10 +1,11 @@
-import {Component, Input} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 import {ICostItem} from "../data/model/ItemCost";
 import {Sort} from '@angular/material/sort';
 import {CostItemsColumns} from "../data/mock/ItemColumns";
 import {CostItems} from "../data/mock/ItemCosts";
 import {ICostColumn} from "../data/model/CostColumn";
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import {FilteringColumnService} from "../../services/filteringcolumnservice.service";
 
 @Component({
     selector: 'app-visa-cost',
@@ -12,13 +13,15 @@ import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
     styleUrls: ['./VisaCost.component.css']
   }
 )
-export class VisaCostComponent {
+export class VisaCostComponent implements OnInit{
   itemsColumns : ICostColumn[] = CostItemsColumns
-  displayColumns : string[] = this.itemsColumns.map((i) => i.ItemCostKey)
+  displayColumns : string[] = this.itemsColumns
+      .filter((i) => i.Visible)
+      .map((i) => i.ItemCostKey)
   itemCosts: ICostItem[] = CostItems
   sortedDataItemCosts : ICostItem[]
 
-  constructor() {
+  constructor(public filterColumnService : FilteringColumnService) {
     this.sortedDataItemCosts = this.itemCosts.slice();
   }
   changeTotalSumPlan(value: number, item : ICostItem) {
@@ -52,6 +55,20 @@ export class VisaCostComponent {
   }
   tableDrop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.displayColumns, event.previousIndex, event.currentIndex);
+  }
+  ngOnInit(): void {
+    this.filterColumnService.isVisible$.subscribe((i) => {
+        console.log(i)
+      let item  = this.itemsColumns.find((column) => column.ItemCostKey == i?.ItemCostKey)
+      if(item) {
+          console.log(item)
+        item.Visible = i?.Visible
+          this.displayColumns = this
+              .itemsColumns
+              .filter(column => column.Visible)
+              .map(column => column.ItemCostKey)
+      }
+    })
   }
 }
 function compare(a: number | string, b: number | string, isAsc: boolean) {
