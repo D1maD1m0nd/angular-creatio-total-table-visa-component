@@ -4,7 +4,8 @@
     cdkDropListOrientation="horizontal"
     [dataSource]="sortedDataItemCosts"
     (matSortChange)="sortData($event)" id="visa-cost-item"
-    (cdkDropListDropped)="tableDrop($event)">
+    (cdkDropListDropped)="tableDrop($event)"
+    class="mat-elevation-z8">
 
     <ng-container *ngFor="let column of itemsColumns; let i = index"
                   [matColumnDef]="column.ItemCostKey">
@@ -13,6 +14,8 @@
                 *matHeaderCellDef
                 cdkDrag
                 cdkDragLockAxis="x"
+                [resizeColumn]="true"
+                [index]="i"
                 mat-sort-header={{column.ItemCostKey}}>
                 {{ column.Name }}
             </mat-header-cell>

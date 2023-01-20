@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, Input, OnInit, Renderer2} from "@angular/core";
 import {ICostItem} from "../data/model/ItemCost";
 import {Sort} from '@angular/material/sort';
 import {CostItemsColumns} from "../data/mock/ItemColumns";
@@ -21,7 +21,7 @@ export class VisaCostComponent implements OnInit{
   itemCosts: ICostItem[] = CostItems
   sortedDataItemCosts : ICostItem[]
 
-  constructor(public filterColumnService : FilteringColumnService) {
+  constructor(public filterColumnService : FilteringColumnService,private renderer: Renderer2) {
     this.sortedDataItemCosts = this.itemCosts.slice();
   }
   changeTotalSumPlan(value: number, item : ICostItem) {
