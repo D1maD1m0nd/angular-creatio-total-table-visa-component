@@ -1,4 +1,4 @@
-import {ICostItem} from "../model/ItemCost";
+
 import {ICostColumn} from "../model/CostColumn";
 
 export const CostItemsColumns : ICostColumn[] = [
