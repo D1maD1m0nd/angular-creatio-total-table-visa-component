@@ -15,31 +15,32 @@ import {ResizeColumnDirective} from "./directives/resize-column.directive";
 import {createCustomElement} from "@angular/elements";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    VisaCostComponent,
-    EditNumericComponent,
-    FilteredColumnsComponent,
-    ResizeColumnDirective
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatSortModule,
-    MatTableModule,
-    DragDropModule,
-    ɵEmptyOutletComponent
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        VisaCostComponent,
+        EditNumericComponent,
+        FilteredColumnsComponent,
+        ResizeColumnDirective
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatSortModule,
+        MatTableModule,
+        DragDropModule,
+        ɵEmptyOutletComponent
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
     constructor(private injector: Injector) {
     }
+
     ngDoBootstrap(appRef: ApplicationRef): void {
-        const el = createCustomElement(AppComponent, { injector: this.injector });
+        const el = createCustomElement(AppComponent, {injector: this.injector});
         customElements.define('visa-cost-component', el);
     }
 }

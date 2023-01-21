@@ -1,8 +1,8 @@
 <div class="item">
-  <input [id]="column.ItemCostKey"
-         type="checkbox"
-         (change)="filterColumnService.changeVisibleColumn(column);
+    <input (change)="filterColumnService.changeVisibleColumn(column);
          column.Checked = !column.Checked"
-         [checked]="column.Checked" />
-  <label [for]="column.ItemCostKey">{{column.Name}}</label>
+           [checked]="column.Checked"
+           [id]="column.ItemCostKey"
+           type="checkbox"/>
+    <label [for]="column.ItemCostKey">{{column.Name}}</label>
 </div>

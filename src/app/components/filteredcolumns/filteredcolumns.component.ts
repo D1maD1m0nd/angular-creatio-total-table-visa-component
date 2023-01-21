@@ -3,12 +3,13 @@ import {ICostColumn} from "../data/model/CostColumn";
 import {FilteringColumnService} from "../../services/filteringcolumnservice.service";
 
 @Component({
-  selector: 'app-filteredcolumns',
-  templateUrl: './filteredcolumns.component.html',
-  styleUrls: ['./filteredcolumns.component.css']
+    selector: 'app-filteredcolumns',
+    templateUrl: './filteredcolumns.component.html',
+    styleUrls: ['./filteredcolumns.component.css']
 })
 export class FilteredColumnsComponent {
-  constructor(public filterColumnService : FilteringColumnService) {
-  }
- @Input() column : ICostColumn
+    @Input() column: ICostColumn
+
+    constructor(public filterColumnService: FilteringColumnService) {
+    }
 }

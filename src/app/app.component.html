@@ -1,6 +1,7 @@
 <div>
-  <app-visa-cost></app-visa-cost>
+    <app-visa-cost [itemsColumnsArg]="apiService.VisaCostSummary.GetVisaItemsResult.CostItemColumn"
+                   [itemCostsArg]="apiService.VisaCostSummary.GetVisaItemsResult.CostItemsResult"></app-visa-cost>
 </div>
 <div *ngFor="let item of itemColumns">
-  <app-filteredcolumns [column]=item></app-filteredcolumns>
+    <app-filteredcolumns [column]=item></app-filteredcolumns>
 </div>
