@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {CostItems} from "./components/data/mock/ItemCosts";
-import {CostItemsColumns} from "./components/data/mock/ItemColumns";
 import {ApiService} from "./services/apiservice.service";
 import {ActivatedRoute} from '@angular/router';
 
@@ -10,8 +8,6 @@ import {ActivatedRoute} from '@angular/router';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-    itemCosts = CostItems
-    itemColumns = CostItemsColumns
 
     constructor(public apiService: ApiService, private route: ActivatedRoute) {
     }

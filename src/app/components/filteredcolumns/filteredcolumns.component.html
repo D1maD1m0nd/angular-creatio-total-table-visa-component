@@ -1,8 +1,9 @@
 <div class="item">
-    <input (change)="filterColumnService.changeVisibleColumn(column);
+    <mat-checkbox
+        (change)="filterColumnService.changeVisibleColumn(column);
          column.Checked = !column.Checked"
-           [checked]="column.Checked"
-           [id]="column.ItemCostKey"
-           type="checkbox"/>
-    <label [for]="column.ItemCostKey">{{column.Name}}</label>
+        [checked]="column.Checked"
+        [id]="column.ItemCostKey">
+        {{column.Name}}
+    </mat-checkbox>
 </div>

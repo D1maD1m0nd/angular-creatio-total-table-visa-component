@@ -16,6 +16,13 @@ export class ApiService {
         private errorService: ErrorService) {
     }
 
+    UpdateDetailBudgetSum(id: string, sum: number): Observable<any> {
+        return this.http.post(`${this.BASE_URL}/ServiceModel/VisaCostItemWebService.svc/UpdateDetailBudgetSum`, {
+            "detailBudgetId": id,
+            "totalSumPlan": sum
+        });
+    }
+
     GetVisaSummary(YearId: string | null, BrandId: string | null): Observable<IVisaCostSummary> {
         return this.http.post<IVisaCostSummary>(`${this.BASE_URL}/ServiceModel/VisaCostItemWebService.svc/GetVisaItems`, {
             "yearBudgetId": YearId,

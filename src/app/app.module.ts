@@ -13,6 +13,7 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
 import {FilteredColumnsComponent} from "./components/filteredcolumns/filteredcolumns.component";
 import {ResizeColumnDirective} from "./directives/resize-column.directive";
 import {createCustomElement} from "@angular/elements";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
     declarations: [
@@ -30,7 +31,8 @@ import {createCustomElement} from "@angular/elements";
         MatSortModule,
         MatTableModule,
         DragDropModule,
-        ɵEmptyOutletComponent
+        ɵEmptyOutletComponent,
+        MatCheckboxModule
     ],
     providers: [],
     bootstrap: [AppComponent]

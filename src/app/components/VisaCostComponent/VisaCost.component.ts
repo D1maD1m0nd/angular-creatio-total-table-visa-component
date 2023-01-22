@@ -4,6 +4,7 @@ import {Sort} from '@angular/material/sort';
 import {ICostColumn} from "../data/model/CostColumn";
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import {FilteringColumnService} from "../../services/filteringcolumnservice.service";
+import {ApiService} from "../../services/apiservice.service";
 
 @Component({
         selector: 'app-visa-cost',
@@ -19,12 +20,17 @@ export class VisaCostComponent implements OnInit {
     itemCosts: ICostItem[]
     sortedDataItemCosts: ICostItem[]
 
-    constructor(public filterColumnService: FilteringColumnService, private renderer: Renderer2) {
+    constructor(public filterColumnService: FilteringColumnService,
+                private renderer: Renderer2,
+                private apiService: ApiService) {
 
     }
 
     changeTotalSumPlan(value: number, item: ICostItem) {
         item.TotalSumPlan = value
+        this.apiService.UpdateDetailBudgetSum(item.DetailBudgetId, value).subscribe(i => {
+            console.log(i);
+        });
     }
 
     sortData(sort: Sort) {
