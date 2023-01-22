@@ -1,4 +1,3 @@
-import {ApplicationRef, Injector, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -12,9 +11,9 @@ import {MatTableModule} from "@angular/material/table";
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {FilteredColumnsComponent} from "./components/filteredcolumns/filteredcolumns.component";
 import {ResizeColumnDirective} from "./directives/resize-column.directive";
-import {createCustomElement} from "@angular/elements";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatCardModule} from "@angular/material/card";
+import {NgModule} from "@angular/core";
 
 @NgModule({
     declarations: [
@@ -40,11 +39,5 @@ import {MatCardModule} from "@angular/material/card";
     bootstrap: [AppComponent]
 })
 export class AppModule {
-    constructor(private injector: Injector) {
-    }
 
-    ngDoBootstrap(appRef: ApplicationRef): void {
-        const el = createCustomElement(AppComponent, {injector: this.injector});
-        customElements.define('visa-cost-component', el);
-    }
 }
