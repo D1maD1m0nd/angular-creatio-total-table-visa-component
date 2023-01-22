@@ -83,17 +83,27 @@
               "zone.js/testing"
             ],
             "tsConfig": "tsconfig.spec.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.css"
-            ],
-            "scripts": []
+              "assets": [
+                  "src/favicon.ico",
+                  "src/assets"
+              ],
+              "styles": [
+                  "@angular/material/prebuilt-themes/indigo-pink.css",
+                  "src/styles.css"
+              ],
+              "scripts": []
           }
-        }
+        },
+          "deploy": {
+              "builder": "@angular/fire:deploy",
+              "options": {
+                  "prerender": false,
+                  "ssr": false,
+                  "browserTarget": "angular-creatio-total-table-visa-component:build:production",
+                  "firebaseProject": "creatioangularcomponent",
+                  "firebaseHostingSite": "creatioangularcomponent"
+              }
+          }
       }
     }
   },
