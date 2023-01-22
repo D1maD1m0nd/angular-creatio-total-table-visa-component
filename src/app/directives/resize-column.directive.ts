@@ -1,4 +1,4 @@
-import { Directive, OnInit, Renderer2, Input, ElementRef } from "@angular/core";
+import {Directive, ElementRef, Input, OnInit, Renderer2} from "@angular/core";
 
 @Directive({
     selector: "[resizeColumn]"
@@ -12,7 +12,7 @@ export class ResizeColumnDirective implements OnInit {
 
     private startWidth: number;
 
-    private column: HTMLElement;
+    private readonly column: HTMLElement;
 
     private table: HTMLElement;
 

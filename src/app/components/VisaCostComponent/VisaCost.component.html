@@ -1,11 +1,11 @@
 <mat-table
-    matSort
-    cdkDropList
-    cdkDropListOrientation="horizontal"
-    [dataSource]="sortedDataItemCosts"
-    (matSortChange)="sortData($event)" id="visa-cost-item"
     (cdkDropListDropped)="tableDrop($event)"
-    class="mat-elevation-z8">
+    (matSortChange)="sortData($event)"
+    [dataSource]="sortedDataItemCosts"
+    cdkDropList
+    cdkDropListOrientation="horizontal" class="mat-elevation-z8"
+    id="visa-cost-item"
+    matSort>
 
     <ng-container *ngFor="let column of itemsColumns; let i = index"
                   [matColumnDef]="column.ItemCostKey">
@@ -14,24 +14,22 @@
                 *matHeaderCellDef
                 cdkDrag
                 cdkDragLockAxis="x"
-                [resizeColumn]="true"
-                [index]="i"
                 mat-sort-header={{column.ItemCostKey}}>
                 {{ column.Name }}
             </mat-header-cell>
             <mat-cell *matCellDef="let element">
-                <app-edit-numeric *ngIf="column.ItemCostKey === 'TotalSumPlan';
+                <app-edit-numeric (outValue)="changeTotalSumPlan($event, element)"
+                                  *ngIf="column.ItemCostKey === 'TotalSumPlan';
                         else elseBlock"
-                                  [value]="element[column.ItemCostKey]"
-                                  (outValue)="changeTotalSumPlan($event, element[column.ItemCostKey])"></app-edit-numeric>
+                                  [value]="element[column.ItemCostKey]"></app-edit-numeric>
                 <ng-template #elseBlock>{{ element[column.ItemCostKey]}}</ng-template>
             </mat-cell>
         </ng-container>
     </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayColumns"
-                    class="tableHeaderRow"
-                    #tableHeaderRow></mat-header-row>
+    <mat-header-row #tableHeaderRow
+                    *matHeaderRowDef="displayColumns"
+                    class="tableHeaderRow"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayColumns;"></mat-row>
 </mat-table>
 
