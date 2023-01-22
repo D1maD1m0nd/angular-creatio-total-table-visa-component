@@ -9,5 +9,6 @@ export interface ICostItem {
     ThirdQuarterPlanSum: number,
     FourthQuarterPlanSum: number,
     TotalSumPlan: number,
+    TotalSumPlanYearBranch: number,
     DetailBudgetId: string
 }
