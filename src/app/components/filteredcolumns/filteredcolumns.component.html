@@ -1,9 +1,7 @@
-<div class="item">
-    <mat-checkbox
-        (change)="filterColumnService.changeVisibleColumn(column);
-         column.Checked = !column.Checked"
-        [checked]="column.Checked"
-        [id]="column.ItemCostKey">
-        {{column.Name}}
-    </mat-checkbox>
-</div>
+<mat-checkbox
+    (change)="filterColumnService.changeVisibleColumn(column);
+     column.Checked = !column.Checked"
+    [checked]="column.Checked"
+    [id]="column.ItemCostKey">
+    {{column.Name}}
+</mat-checkbox>

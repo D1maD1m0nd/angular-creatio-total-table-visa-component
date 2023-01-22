@@ -40,22 +40,12 @@ export class VisaCostComponent implements OnInit {
             return;
         }
 
-        this.sortedDataItemCosts = data.sort((a, b) => {
-            const isAsc = sort.direction === 'asc';
-            switch (sort.active) {
-                case "TotalSumPlan":
-                case "FourthQuarterPlanSum":
-                case "ThirdQuarterPlanSum":
-                case 'SecondQuarterPlanSum':
-                case "FirstQuarterPlanSum":
-                case 'BrandName':
-                case "OwnerName":
-                case 'CostItemName':
-                case "GroupItemName":
-                case 'FilialName':
-                    return compare(a[sort.active], b[sort.active], isAsc);
-                default:
-                    return 0;
+        this.sortedDataItemCosts = data.sort((a: any, b: any) => {
+            if (Object.keys(a).includes(sort.active)) {
+                const isAsc = sort.direction === 'asc';
+                return compare(a[sort.active], b[sort.active], isAsc);
+            } else {
+                return 0;
             }
         });
     }
