@@ -14,6 +14,7 @@ import {FilteredColumnsComponent} from "./components/filteredcolumns/filteredcol
 import {ResizeColumnDirective} from "./directives/resize-column.directive";
 import {createCustomElement} from "@angular/elements";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
     declarations: [
@@ -32,7 +33,8 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
         MatTableModule,
         DragDropModule,
         ɵEmptyOutletComponent,
-        MatCheckboxModule
+        MatCheckboxModule,
+        MatCardModule
     ],
     providers: [],
     bootstrap: [AppComponent]
