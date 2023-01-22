@@ -1,8 +1,6 @@
 import {Component, Input, OnInit, Renderer2} from "@angular/core";
 import {ICostItem} from "../data/model/ItemCost";
 import {Sort} from '@angular/material/sort';
-import {CostItemsColumns} from "../data/mock/ItemColumns";
-import {CostItems} from "../data/mock/ItemCosts";
 import {ICostColumn} from "../data/model/CostColumn";
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import {FilteringColumnService} from "../../services/filteringcolumnservice.service";
@@ -16,15 +14,13 @@ import {FilteringColumnService} from "../../services/filteringcolumnservice.serv
 export class VisaCostComponent implements OnInit {
     @Input() itemsColumnsArg: ICostColumn[]
     @Input() itemCostsArg: ICostItem[]
-    itemsColumns: ICostColumn[] = CostItemsColumns
-    displayColumns: string[] = this.itemsColumns
-        .filter((i) => i.Visible)
-        .map((i) => i.ItemCostKey)
-    itemCosts: ICostItem[] = CostItems
+    itemsColumns: ICostColumn[]
+    displayColumns: string[]
+    itemCosts: ICostItem[]
     sortedDataItemCosts: ICostItem[]
 
     constructor(public filterColumnService: FilteringColumnService, private renderer: Renderer2) {
-        this.sortedDataItemCosts = this.itemCosts.slice();
+
     }
 
     changeTotalSumPlan(value: number, item: ICostItem) {
@@ -49,7 +45,7 @@ export class VisaCostComponent implements OnInit {
                 case 'BrandName':
                 case "OwnerName":
                 case 'CostItemName':
-                case "GroupCostItemName":
+                case "GroupItemName":
                 case 'FilialName':
                     return compare(a[sort.active], b[sort.active], isAsc);
                 default:
@@ -63,6 +59,12 @@ export class VisaCostComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.itemCosts = this.itemCostsArg
+        this.itemsColumns = this.itemsColumnsArg
+        this.displayColumns = this.itemsColumns
+            .filter((i) => i.Visible)
+            .map((i) => i.ItemCostKey)
+        this.sortedDataItemCosts = this.itemCostsArg.slice();
         this.filterColumnService.isVisible$.subscribe((i) => {
             console.log(i)
             let item = this.itemsColumns.find((column) => column.ItemCostKey == i?.ItemCostKey)

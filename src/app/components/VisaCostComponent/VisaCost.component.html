@@ -12,8 +12,6 @@
         <ng-container *ngIf="column.Visible">
             <mat-header-cell
                 *matHeaderCellDef
-                [index]="i"
-                [resizeColumn]="true"
                 cdkDrag
                 cdkDragLockAxis="x"
                 mat-sort-header={{column.ItemCostKey}}>

@@ -1,6 +1,6 @@
 export interface ICostItem {
     FilialName: string,
-    GroupCostItemName: string,
+    GroupItemName: string,
     CostItemName: string,
     OwnerName: string,
     BrandName: string,
