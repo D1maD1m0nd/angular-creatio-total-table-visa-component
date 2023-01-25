@@ -5,6 +5,7 @@ import {ICostColumn} from "../data/model/CostColumn";
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import {FilteringColumnService} from "../../services/filteringcolumnservice.service";
 import {ApiService} from "../../services/apiservice.service";
+import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
         selector: 'app-visa-cost',
@@ -17,8 +18,12 @@ export class VisaCostComponent implements OnInit {
     @Input() itemCostsArg: ICostItem[]
     itemsColumns: ICostColumn[]
     displayColumns: string[]
+    groupByColumns: string[] = []
     itemCosts: ICostItem[]
     sortedDataItemCosts: ICostItem[]
+
+    // @ts-ignore
+    public dataSource = new MatTableDataSource<ICostItem>([]);
 
     constructor(public filterColumnService: FilteringColumnService,
                 private renderer: Renderer2,
@@ -37,6 +42,7 @@ export class VisaCostComponent implements OnInit {
         const data = this.itemCosts.slice();
         if (!sort.active || sort.direction === '') {
             this.sortedDataItemCosts = data;
+            this.dataSource.data = this.sortedDataItemCosts
             return;
         }
 
@@ -48,6 +54,7 @@ export class VisaCostComponent implements OnInit {
                 return 0;
             }
         });
+        this.dataSource.data = this.sortedDataItemCosts
     }
 
     tableDrop(event: CdkDragDrop<string[]>) {
@@ -61,6 +68,7 @@ export class VisaCostComponent implements OnInit {
             .filter((i) => i.Visible)
             .map((i) => i.ItemCostKey)
         this.sortedDataItemCosts = this.itemCostsArg.slice();
+        this.dataSource.data = this.sortedDataItemCosts
         this.filterColumnService.isVisible$.subscribe((i) => {
             console.log(i)
             let item = this.itemsColumns.find((column) => column.ItemCostKey == i?.ItemCostKey)

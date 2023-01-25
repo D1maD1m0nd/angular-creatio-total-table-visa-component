@@ -1,7 +1,7 @@
 <mat-table
     (cdkDropListDropped)="tableDrop($event)"
     (matSortChange)="sortData($event)"
-    [dataSource]="sortedDataItemCosts"
+    [dataSource]="dataSource"
     cdkDropList
     cdkDropListOrientation="horizontal" class="mat-elevation-z8"
     id="visa-cost-item"
