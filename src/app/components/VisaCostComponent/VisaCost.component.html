@@ -25,8 +25,8 @@
                     <mat-icon>menu</mat-icon>
                 </button>
                 <mat-menu #menu>
-                    <button mat-menu-item (click)="groupBy($event, column.ItemCostKey);">Group By This Field</button>
-                    <button mat-menu-item (click)="unGroupBy($event, column.ItemCostKey);">Ungroup</button>
+                    <button mat-menu-item (click)="groupBy($event, column.ItemCostKey);">Сгруппировать</button>
+                    <button mat-menu-item (click)="unGroupBy($event, column.ItemCostKey);">Разгруппировать</button>
                 </mat-menu>
             </mat-header-cell>
             <mat-cell *matCellDef="let element">
@@ -53,7 +53,8 @@
         </mat-cell>
     </ng-container>
 
-    <mat-row *matRowDef="let row; columns: ['groupHeader']; when: isGroup" (click)="groupHeaderClick(row)"></mat-row>
+    <mat-row class="mat-cursor" *matRowDef="let row; columns: ['groupHeader']; when: isGroup"
+             (click)="groupHeaderClick(row)"></mat-row>
 
 </mat-table>
 
