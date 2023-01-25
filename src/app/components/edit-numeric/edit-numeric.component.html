@@ -3,7 +3,7 @@
         <div class="text-field__icon">
             <input
                 #numberItem
-                (focus)="saveNumData(numberItem.value)"
+                (focusout)="saveNumData(numberItem.value)"
                 [value]="value"
                 class="text-field__input"
                 id="number-input"

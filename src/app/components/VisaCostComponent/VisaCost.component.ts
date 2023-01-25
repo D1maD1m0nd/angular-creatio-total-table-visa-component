@@ -38,10 +38,12 @@ export class VisaCostComponent implements OnInit {
     }
 
     changeTotalSumPlan(value: number, item: ICostItem) {
-        item.TotalSumPlan = value
-        this.apiService.UpdateDetailBudgetSum(item.DetailBudgetId, value).subscribe(i => {
-            console.log(i);
-        });
+        if (item.TotalSumPlan !== value) {
+            item.TotalSumPlan = value
+            this.apiService.UpdateDetailBudgetSum(item.DetailBudgetId, value).subscribe(i => {
+                console.log(i);
+            });
+        }
     }
 
     sortData(sort: Sort) {
