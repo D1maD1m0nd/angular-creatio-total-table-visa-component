@@ -17,6 +17,7 @@ import {Group} from "../data/model/Group";
 export class VisaCostComponent implements OnInit {
     @Input() itemsColumnsArg: ICostColumn[]
     @Input() itemCostsArg: ICostItem[]
+    sortingDisable: boolean = false
     itemsColumns: ICostColumn[]
     displayColumns: string[]
     groupByColumns: string[] = []
@@ -29,6 +30,10 @@ export class VisaCostComponent implements OnInit {
     constructor(public filterColumnService: FilteringColumnService,
                 private renderer: Renderer2,
                 private apiService: ApiService) {
+
+    }
+
+    changeSortingEnabled() {
 
     }
 
