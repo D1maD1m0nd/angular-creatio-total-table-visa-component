@@ -16,6 +16,14 @@
                 cdkDragLockAxis="x"
                 mat-sort-header={{column.ItemCostKey}}>
                 {{ column.Name }}
+                <button class="grid-view-header-menu"
+                        mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon>menu</mat-icon>
+                </button>
+                <mat-menu #menu>
+                    <button mat-menu-item>Group By This Field</button>
+                    <button mat-menu-item>Ungroup</button>
+                </mat-menu>
             </mat-header-cell>
             <mat-cell *matCellDef="let element">
                 <app-edit-numeric (outValue)="changeTotalSumPlan($event, element)"

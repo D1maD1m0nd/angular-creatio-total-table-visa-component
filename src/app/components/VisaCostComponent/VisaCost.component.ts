@@ -84,9 +84,9 @@ export class VisaCostComponent implements OnInit {
         })
     }
 
-    groupBy(event: { stopPropagation: () => void; }, column: { field: any; }) {
+    groupBy(event: { stopPropagation: () => void; }, column: string) {
         event.stopPropagation();
-        this.checkGroupByColumn(column.field, true);
+        this.checkGroupByColumn(column, true);
         this.dataSource.data = this.addGroups(this.sortedDataItemCosts, this.groupByColumns);
         this.dataSource.filter = performance.now().toString();
     }
@@ -112,7 +112,7 @@ export class VisaCostComponent implements OnInit {
     // @ts-ignore
     unGroupBy(event, column) {
         event.stopPropagation();
-        this.checkGroupByColumn(column.field, false);
+        this.checkGroupByColumn(column, false);
         this.dataSource.data = this.addGroups(this.sortedDataItemCosts, this.groupByColumns);
         this.dataSource.filter = performance.now().toString();
     }
