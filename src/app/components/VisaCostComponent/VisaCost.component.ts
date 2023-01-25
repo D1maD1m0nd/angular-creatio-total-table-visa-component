@@ -69,7 +69,9 @@ export class VisaCostComponent implements OnInit {
             .filter((i) => i.Visible)
             .map((i) => i.ItemCostKey)
         this.sortedDataItemCosts = this.itemCostsArg.slice();
-        this.dataSource.data = this.sortedDataItemCosts
+        this.dataSource.data = this.addGroups(this.sortedDataItemCosts, this.groupByColumns);
+        this.dataSource.filterPredicate = this.customFilterPredicate.bind(this);
+        this.dataSource.filter = performance.now().toString();
         this.filterColumnService.isVisible$.subscribe((i) => {
             console.log(i)
             let item = this.itemsColumns.find((column) => column.ItemCostKey == i?.ItemCostKey)
