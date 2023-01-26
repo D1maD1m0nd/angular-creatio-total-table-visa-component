@@ -14,6 +14,10 @@ import {ResizeColumnDirective} from "./directives/resize-column.directive";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatCardModule} from "@angular/material/card";
 import {NgModule} from "@angular/core";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {MatIconModule} from "@angular/material/icon";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
     declarations: [
@@ -33,7 +37,11 @@ import {NgModule} from "@angular/core";
         DragDropModule,
         ɵEmptyOutletComponent,
         MatCheckboxModule,
-        MatCardModule
+        MatCardModule,
+        MatExpansionModule,
+        MatIconModule,
+        MatMenuModule,
+        MatButtonModule
     ],
     providers: [],
     bootstrap: [AppComponent]

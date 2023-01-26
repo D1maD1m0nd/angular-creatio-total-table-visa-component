@@ -1,6 +1,14 @@
+.mat-card-check-box {
+    margin: 15px 15px 15px
+}
+
 .filter-section {
     display: flex;
     align-content: center;
     align-items: center;
-    height: 60px;
+    flex-wrap: wrap;
+}
+
+.expanded-card {
+    width: 40%;
 }

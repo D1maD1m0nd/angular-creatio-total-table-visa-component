@@ -1,14 +1,18 @@
 <div *ngIf="apiService.VisaCostSummary">
-    <mat-card>
-        <mat-card-content>
-            <h2>Отображаемые колонки</h2>
-            <section class="filter-section">
+    <mat-expansion-panel class="mat-card-check-box expanded-card">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Отображаемые колонки
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-card>
+            <mat-card-content class="filter-section">
                 <ng-container *ngFor="let item of apiService.VisaCostSummary.GetVisaItemsResult.CostItemColumn">
                     <app-filteredcolumns [column]=item></app-filteredcolumns>
                 </ng-container>
-            </section>
-        </mat-card-content>
-    </mat-card>
+            </mat-card-content>
+        </mat-card>
+    </mat-expansion-panel>
 
     <app-visa-cost [itemsColumnsArg]="apiService.VisaCostSummary.GetVisaItemsResult.CostItemColumn"
                    [itemCostsArg]="apiService.VisaCostSummary.GetVisaItemsResult.CostItemsResult"></app-visa-cost>
