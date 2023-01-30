@@ -2,6 +2,10 @@
     margin: 15px 15px 15px
 }
 
+.save-button {
+    margin: 15px 15px 15px
+}
+
 .filter-section {
     display: flex;
     align-content: center;

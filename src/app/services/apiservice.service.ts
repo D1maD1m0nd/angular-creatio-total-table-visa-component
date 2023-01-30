@@ -2,18 +2,51 @@ import {Injectable} from '@angular/core';
 import {ErrorService} from "./error.service";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {catchError, Observable, tap, throwError} from "rxjs";
-import {IVisaCostSummary} from "../components/data/model/VisaCostSummary";
+import {IVisaCostSummary} from "../components/data/model/response/VisaCostSummary";
+import {ICostVisaSaveData} from "../components/data/model/request/ICostVisaSaveData";
+import {ICostVisaSaveItem} from "../components/data/model/request/ICostVisaSaveItem";
 
 @Injectable({
     providedIn: 'root'
 })
 export class ApiService {
     VisaCostSummary: IVisaCostSummary
+    VisaCostSummarySave: Map<string, number> = new Map();
     BASE_URL = 'https://fotodom.site:489/0'
 
     constructor(
         private http: HttpClient,
         private errorService: ErrorService) {
+    }
+
+    AddSaveData(id: string, sum: number) {
+        console.log(`AddSave Data ${id}, ${sum}`);
+        this.VisaCostSummarySave.set(id, sum);
+    }
+
+    ClearSaveData() {
+        this.VisaCostSummarySave.clear();
+    }
+
+    PostSaveDataBudgetDetail(): Observable<any> {
+        const saveDataArray: ICostVisaSaveItem[] = [];
+        this.VisaCostSummarySave.forEach((value, key) => {
+            saveDataArray.push({
+                    Id: key,
+                    TotalSumPlan: value
+                }
+            );
+        });
+        const CostVisaSaveData: ICostVisaSaveData = {
+            CostItemData: saveDataArray
+        }
+        return this.http.post(
+            `${this.BASE_URL}/ServiceModel/VisaCostItemWebService.svc/UpdateRecordsDetailBudgetSum`,
+            CostVisaSaveData
+        );
+        // this.apiService.UpdateDetailBudgetSum(item.DetailBudgetId, value).subscribe(i => {
+        //     console.log(i);
+        // });
     }
 
     UpdateDetailBudgetSum(id: string, sum: number): Observable<any> {

@@ -36,11 +36,6 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
-/* text field */
-.text-field {
-    margin-bottom: 1rem;
-}
-
 .text-field__label {
     display: block;
     margin-bottom: 0.25rem;
@@ -92,13 +87,8 @@ input[type=number] {
     opacity: 1;
 }
 
-/* active icon - 1 вариант */
-.text-field__icon {
-    position: relative;
-}
-
 .text-field__icon .text-field__input {
-    padding-right: 2.5rem;
+    padding-right: 1rem;
 }
 
 .text-field__aicon {
