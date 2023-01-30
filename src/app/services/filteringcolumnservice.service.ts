@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
-import {ICostColumn} from "../components/data/model/CostColumn";
+import {ICostColumn} from "../components/data/model/response/CostColumn";
 
 @Injectable({
     providedIn: 'root'
