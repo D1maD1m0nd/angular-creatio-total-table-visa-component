@@ -1,12 +1,12 @@
 import {Component, Input, OnInit, Renderer2} from "@angular/core";
-import {ICostItem} from "../data/model/ItemCost";
+import {ICostItem} from "../data/model/response/ItemCost";
 import {Sort} from '@angular/material/sort';
-import {ICostColumn} from "../data/model/CostColumn";
+import {ICostColumn} from "../data/model/response/CostColumn";
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import {FilteringColumnService} from "../../services/filteringcolumnservice.service";
 import {ApiService} from "../../services/apiservice.service";
 import {MatTableDataSource} from "@angular/material/table";
-import {Group} from "../data/model/Group";
+import {Group} from "../data/model/response/Group";
 
 @Component({
         selector: 'app-visa-cost',
@@ -40,9 +40,7 @@ export class VisaCostComponent implements OnInit {
     changeTotalSumPlan(value: number, item: ICostItem) {
         if (item.TotalSumPlan !== value) {
             item.TotalSumPlan = value
-            this.apiService.UpdateDetailBudgetSum(item.DetailBudgetId, value).subscribe(i => {
-                console.log(i);
-            });
+            this.apiService.AddSaveData(item.DetailBudgetId, value);
         }
     }
 

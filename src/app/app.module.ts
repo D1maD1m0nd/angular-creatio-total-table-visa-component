@@ -17,6 +17,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatIconModule} from "@angular/material/icon";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatButtonModule} from "@angular/material/button";
+import {TitleVisaTableComponent} from './components/title-visa-table/title-visa-table.component';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import {MatButtonModule} from "@angular/material/button";
         VisaCostComponent,
         EditNumericComponent,
         FilteredColumnsComponent,
-        ResizeColumnDirective
+        ResizeColumnDirective,
+        TitleVisaTableComponent
     ],
     imports: [
         BrowserModule,
