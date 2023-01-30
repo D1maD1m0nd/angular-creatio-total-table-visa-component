@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from "./services/apiservice.service";
-import {ActivatedRoute} from '@angular/router';
 
 @Component({
     selector: 'app-root',
@@ -8,8 +7,7 @@ import {ActivatedRoute} from '@angular/router';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
-    constructor(public apiService: ApiService, private route: ActivatedRoute) {
+    constructor(public apiService: ApiService) {
     }
 
     ngOnInit(): void {

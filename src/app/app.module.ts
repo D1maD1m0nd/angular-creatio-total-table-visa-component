@@ -1,5 +1,4 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {VisaCostComponent} from "./components/VisaCostComponent/VisaCost.component";
 import {HttpClientModule} from "@angular/common/http";
@@ -29,7 +28,6 @@ import {MatButtonModule} from "@angular/material/button";
     ],
     imports: [
         BrowserModule,
-        AppRoutingModule,
         HttpClientModule,
         BrowserAnimationsModule,
         MatSortModule,
