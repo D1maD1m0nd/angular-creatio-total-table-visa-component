@@ -1,4 +1,4 @@
-export interface IMetaData {
+export interface ISummaryData {
     TotalSumPlanSummary: number,
     TotalSumPlanYearBranchSummary: number,
 }

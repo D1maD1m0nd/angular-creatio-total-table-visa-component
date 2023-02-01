@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {IMetaData} from "../data/model/response/MetaData";
 
 @Component({
     selector: 'app-title-visa-table',
@@ -6,5 +7,5 @@ import {Component} from '@angular/core';
     styleUrls: ['./title-visa-table.component.css']
 })
 export class TitleVisaTableComponent {
-
+    @Input() metaData: IMetaData
 }

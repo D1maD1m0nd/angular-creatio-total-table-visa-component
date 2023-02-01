@@ -16,3 +16,7 @@
 .expanded-card {
     width: 40%;
 }
+
+.title-container {
+    display: flex;
+}
