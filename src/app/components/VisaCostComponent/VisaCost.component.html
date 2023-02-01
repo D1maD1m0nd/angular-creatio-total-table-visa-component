@@ -42,7 +42,12 @@
     <mat-header-row #tableHeaderRow
                     *matHeaderRowDef="displayColumns"
                     class="tableHeaderRow"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayColumns;"></mat-row>
+    <mat-row
+        *matRowDef="let row; columns: displayColumns;"
+        [ngClass]="{
+        'row-state-negative': row.TotalSumPlan < row.TotalSumPlanYearBranch,
+         'row-state-positive': row.TotalSumPlan > row.TotalSumPlanYearBranch}"
+    ></mat-row>
 
     <ng-container matColumnDef="groupHeader">
         <mat-cell colspan="999" *matCellDef="let group">
