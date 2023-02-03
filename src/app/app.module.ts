@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
-import {VisaCostComponent} from "./components/VisaCostComponent/VisaCost.component";
 import {HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSortModule} from '@angular/material/sort';
@@ -21,11 +20,12 @@ import {MatInputModule} from "@angular/material/input";
 import {createCustomElement} from '@angular/elements';
 import {VltSummaryVisaCostComponent} from "./components/summary-visa-cost/vlt-summary-visa-cost.component";
 import {TitleVisaComponent} from "./components/title-visa/title-visa.component";
+import {VisaCostTableComponent} from "./components/visa-cost-table/visa-cost-table.component";
 
 @NgModule({
     declarations: [
         AppComponent,
-        VisaCostComponent,
+        VisaCostTableComponent,
         EditNumericComponent,
         FilterColumnComponent,
         ResizeColumnDirective,

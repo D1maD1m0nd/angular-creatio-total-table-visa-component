@@ -9,12 +9,11 @@ import {MatTableDataSource} from "@angular/material/table";
 import {Group} from "../data/model/response/Group";
 
 @Component({
-        selector: 'app-visa-cost',
-        templateUrl: './VisaCost.component.html',
-        styleUrls: ['./VisaCost.component.css']
-    }
-)
-export class VisaCostComponent implements OnInit {
+    selector: 'vlt-visa-cost-table',
+    templateUrl: './visa-cost-table.component.html',
+    styleUrls: ['./visa-cost-table.component.css']
+})
+export class VisaCostTableComponent implements OnInit {
     @Input() itemsColumnsArg: ICostColumn[]
     @Input() itemCostsArg: ICostItem[]
     sortingDisable: boolean = false
@@ -30,10 +29,6 @@ export class VisaCostComponent implements OnInit {
     constructor(public filterColumnService: FilteringColumnService,
                 private renderer: Renderer2,
                 private apiService: ApiService) {
-
-    }
-
-    changeSortingEnabled() {
 
     }
 
