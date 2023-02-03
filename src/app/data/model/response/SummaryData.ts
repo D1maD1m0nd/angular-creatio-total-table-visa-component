@@ -1,4 +1,4 @@
 export interface ISummaryData {
-    TotalSumPlanSummary: number,
-    TotalSumPlanYearBranchSummary: number,
+    TotalSumPlan: number,
+    TotalSumPlanYearBranch: number,
 }
