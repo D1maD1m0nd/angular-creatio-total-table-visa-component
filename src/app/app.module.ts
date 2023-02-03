@@ -7,7 +7,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {EditNumericComponent} from './components/edit-numeric/edit-numeric.component';
 import {MatTableModule} from "@angular/material/table";
 import {DragDropModule} from "@angular/cdk/drag-drop";
-import {FilteredColumnsComponent} from "./components/filteredcolumns/filteredcolumns.component";
+import {FilterColumnComponent} from "./components/filter-column/filter-column.component";
 import {ResizeColumnDirective} from "./directives/resize-column.directive";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatCardModule} from "@angular/material/card";
@@ -27,7 +27,7 @@ import {VltSummaryVisaCostComponent} from "./components/summary-visa-cost/vlt-su
         AppComponent,
         VisaCostComponent,
         EditNumericComponent,
-        FilteredColumnsComponent,
+        FilterColumnComponent,
         ResizeColumnDirective,
         TitleVisaTableComponent,
         VltSummaryVisaCostComponent
