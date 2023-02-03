@@ -86,3 +86,11 @@ table th:hover .resize-handle {
 .mat-cursor {
     cursor: pointer;
 }
+
+.row-state-negative {
+    background-color: #ff859e;
+}
+
+.row-state-positive {
+    background-color: #acff9b;
+}

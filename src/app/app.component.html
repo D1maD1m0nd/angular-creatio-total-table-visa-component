@@ -21,8 +21,8 @@
                 </ng-container>
             </mat-card-content>
         </mat-card>
-
     </mat-expansion-panel>
+    <app-title-visa-table [metaData]="apiService.VisaCostSummary.GetVisaItemsResult.MetaData"></app-title-visa-table>
     <app-visa-cost [itemsColumnsArg]="apiService.VisaCostSummary.GetVisaItemsResult.CostItemColumn"
                    [itemCostsArg]="apiService.VisaCostSummary.GetVisaItemsResult.CostItemsResult"></app-visa-cost>
 </div>

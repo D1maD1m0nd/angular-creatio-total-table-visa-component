@@ -12,7 +12,8 @@ export class AppComponent implements OnInit {
 
     SendSaveDataIntoServer() {
         this.apiService.PostSaveDataBudgetDetail().subscribe((i) => {
-            console.log(i);
+            console.log(i)
+            this.apiService.ClearSaveData()
         })
     }
 

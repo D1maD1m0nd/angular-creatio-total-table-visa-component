@@ -1,11 +1,10 @@
-<div style="max-width: 100px;">
-            <input
-                #numberItem
-                (focusout)="saveNumData(numberItem.value)"
-                [value]="value"
-                class="text-field__input"
-                id="number-input"
-                name="number"
-                placeholder="0.0"
-                type="number">
-</div>
+<mat-form-field
+    appearance="fill"
+    >
+    <input
+        matInput
+        type="number"
+        placeholder="0"
+        [value]="value.toString()">
+    <span matTextPrefix>$&nbsp;</span>
+</mat-form-field>

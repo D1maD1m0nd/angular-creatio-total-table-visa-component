@@ -44,18 +44,7 @@ export class ApiService {
             `${this.BASE_URL}/ServiceModel/VisaCostItemWebService.svc/UpdateRecordsDetailBudgetSum`,
             CostVisaSaveData
         );
-        // this.apiService.UpdateDetailBudgetSum(item.DetailBudgetId, value).subscribe(i => {
-        //     console.log(i);
-        // });
     }
-
-    UpdateDetailBudgetSum(id: string, sum: number): Observable<any> {
-        return this.http.post(`${this.BASE_URL}/ServiceModel/VisaCostItemWebService.svc/UpdateDetailBudgetSum`, {
-            "detailBudgetId": id,
-            "totalSumPlan": sum
-        });
-    }
-
     GetVisaSummary(YearId: string | null, BrandId: string | null): Observable<IVisaCostSummary> {
         return this.http.post<IVisaCostSummary>(`${this.BASE_URL}/ServiceModel/VisaCostItemWebService.svc/GetVisaItems`, {
             "yearBudgetId": YearId,
