@@ -16,11 +16,11 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatIconModule} from "@angular/material/icon";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatButtonModule} from "@angular/material/button";
-import {TitleVisaTableComponent} from './components/title-visa-table/title-visa-table.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {createCustomElement} from '@angular/elements';
 import {VltSummaryVisaCostComponent} from "./components/summary-visa-cost/vlt-summary-visa-cost.component";
+import {TitleVisaComponent} from "./components/title-visa/title-visa.component";
 
 @NgModule({
     declarations: [
@@ -29,7 +29,7 @@ import {VltSummaryVisaCostComponent} from "./components/summary-visa-cost/vlt-su
         EditNumericComponent,
         FilterColumnComponent,
         ResizeColumnDirective,
-        TitleVisaTableComponent,
+        TitleVisaComponent,
         VltSummaryVisaCostComponent
     ],
     imports: [
