@@ -3,7 +3,7 @@ import {AppComponent} from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSortModule} from '@angular/material/sort';
-import {EditNumericComponent} from './components/edit-numeric/edit-numeric.component';
+import {EditNumericFieldComponent} from './components/edit-numeric-table/edit-numeric-field.component';
 import {MatTableModule} from "@angular/material/table";
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {FilterColumnComponent} from "./components/filter-column/filter-column.component";
@@ -26,7 +26,7 @@ import {VisaCostTableComponent} from "./components/visa-cost-table/visa-cost-tab
     declarations: [
         AppComponent,
         VisaCostTableComponent,
-        EditNumericComponent,
+        EditNumericFieldComponent,
         FilterColumnComponent,
         ResizeColumnDirective,
         TitleVisaComponent,
