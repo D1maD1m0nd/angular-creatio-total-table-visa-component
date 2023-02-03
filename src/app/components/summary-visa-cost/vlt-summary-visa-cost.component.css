@@ -1,0 +1,22 @@
+.mat-card-check-box {
+    margin: 15px 15px 15px
+}
+
+.save-button {
+    margin: 15px 15px 15px
+}
+
+.filter-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.expanded-card {
+    width: 40%;
+}
+
+.title-container {
+    display: flex;
+}

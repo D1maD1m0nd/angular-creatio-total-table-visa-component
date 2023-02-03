@@ -1,0 +1,30 @@
+<div>
+    <ng-container *ngIf="VisaCostSummary">
+        <button
+            class="save-button" color="warn"
+            mat-raised-button>Отменить
+        </button>
+        <button (click)="SendSaveDataIntoServer()" class="save-button"
+                color="primary"
+                mat-raised-button
+        >Сохранить
+        </button>
+        <mat-expansion-panel class="mat-card-check-box expanded-card">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Отображаемые колонки
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-card>
+                <mat-card-content class="filter-section">
+                    <ng-container *ngFor="let item of VisaCostSummary.GetVisaItemsResult.CostItemColumn">
+                        <vlt-filter-column [column]=item></vlt-filter-column>
+                    </ng-container>
+                </mat-card-content>
+            </mat-card>
+        </mat-expansion-panel>
+        <vlt-title-visa [metaData]="VisaCostSummary.GetVisaItemsResult.MetaData"></vlt-title-visa>
+        <vlt-visa-cost-table [itemCostsArg]="VisaCostSummary.GetVisaItemsResult.CostItemsResult"
+                             [itemsColumnsArg]="VisaCostSummary.GetVisaItemsResult.CostItemColumn"></vlt-visa-cost-table>
+    </ng-container>
+</div>

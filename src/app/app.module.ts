@@ -20,6 +20,7 @@ import {TitleVisaTableComponent} from './components/title-visa-table/title-visa-
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {createCustomElement} from '@angular/elements';
+import {VltSummaryVisaCostComponent} from "./components/summary-visa-cost/vlt-summary-visa-cost.component";
 
 @NgModule({
     declarations: [
@@ -28,7 +29,8 @@ import {createCustomElement} from '@angular/elements';
         EditNumericComponent,
         FilteredColumnsComponent,
         ResizeColumnDirective,
-        TitleVisaTableComponent
+        TitleVisaTableComponent,
+        VltSummaryVisaCostComponent
     ],
     imports: [
         BrowserModule,
