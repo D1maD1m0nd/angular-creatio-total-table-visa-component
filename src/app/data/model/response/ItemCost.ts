@@ -11,4 +11,5 @@ export interface ICostItem {
     TotalSumPlan: number,
     TotalSumPlanYearBranch: number,
     DetailBudgetId: string
+    YearName: string
 }

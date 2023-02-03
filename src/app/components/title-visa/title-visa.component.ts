@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {IMetaData} from "../data/model/response/MetaData";
+import {IMetaData} from "../../data/model/response/MetaData";
 
 @Component({
     selector: 'vlt-title-visa',

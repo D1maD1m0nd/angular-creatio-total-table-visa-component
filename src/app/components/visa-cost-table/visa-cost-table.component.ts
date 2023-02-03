@@ -1,12 +1,12 @@
 import {Component, Input, OnInit, Renderer2} from "@angular/core";
-import {ICostItem} from "../data/model/response/ItemCost";
+import {ICostItem} from "../../data/model/response/ItemCost";
 import {Sort} from '@angular/material/sort';
-import {ICostColumn} from "../data/model/response/CostColumn";
+import {ICostColumn} from "../../data/model/response/CostColumn";
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import {FilteringColumnService} from "../../services/filteringcolumnservice.service";
 import {ApiService} from "../../services/apiservice.service";
 import {MatTableDataSource} from "@angular/material/table";
-import {Group} from "../data/model/response/Group";
+import {Group} from "../../data/model/response/Group";
 
 @Component({
     selector: 'vlt-visa-cost-table',

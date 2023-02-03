@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {IVisaCostSummary} from "../data/model/response/VisaCostSummary";
+import {IVisaCostSummary} from "../../data/model/response/VisaCostSummary";
 import {ApiService} from "../../services/apiservice.service";
 import {ConverterService} from "../../services/converter.service";
 

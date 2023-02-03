@@ -2,9 +2,9 @@ import {Injectable} from '@angular/core';
 import {ErrorService} from "./error.service";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {catchError, Observable, tap, throwError} from "rxjs";
-import {IVisaCostSummary} from "../components/data/model/response/VisaCostSummary";
-import {ICostVisaSaveData} from "../components/data/model/request/ICostVisaSaveData";
-import {ICostVisaSaveItem} from "../components/data/model/request/ICostVisaSaveItem";
+import {IVisaCostSummary} from "../data/model/response/VisaCostSummary";
+import {ICostVisaSaveData} from "../data/model/request/ICostVisaSaveData";
+import {ICostVisaSaveItem} from "../data/model/request/ICostVisaSaveItem";
 
 @Injectable({
     providedIn: 'root'

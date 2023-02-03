@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Subject} from "rxjs";
-import {IVisaCostSummary} from "../components/data/model/response/VisaCostSummary";
+import {IVisaCostSummary} from "../data/model/response/VisaCostSummary";
 
 @Injectable({
     providedIn: 'root'
