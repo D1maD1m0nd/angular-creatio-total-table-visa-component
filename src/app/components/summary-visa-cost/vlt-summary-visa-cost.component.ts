@@ -4,7 +4,7 @@ import {ApiService} from "../../services/apiservice.service";
 import {ConverterService} from "../../services/converter.service";
 
 @Component({
-    selector: 'vlt-summary-visa-cost',
+    selector: 'vlt-summary-visa-cost-component',
     templateUrl: './vlt-summary-visa-cost.component.html',
     styleUrls: ['./vlt-summary-visa-cost.component.css']
 })

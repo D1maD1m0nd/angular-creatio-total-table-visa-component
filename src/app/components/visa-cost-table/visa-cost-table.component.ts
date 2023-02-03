@@ -74,14 +74,16 @@ export class VisaCostTableComponent implements OnInit {
         this.dataSource.filter = performance.now().toString();
         this.filterColumnService.isVisible$.subscribe((i) => {
             console.log(i)
-            let item = this.itemsColumns.find((column) => column.ItemCostKey == i?.ItemCostKey)
-            if (item) {
-                console.log(item)
-                item.Visible = i?.Visible
-                this.displayColumns = this
-                    .itemsColumns
-                    .filter(column => column.Visible)
-                    .map(column => column.ItemCostKey)
+            if (i) {
+                let item = this.itemsColumns.find((column) => column.ItemCostKey == i?.ItemCostKey)
+                if (item) {
+                    console.log(item)
+                    item.Visible = i.Visible
+                    this.displayColumns = this
+                        .itemsColumns
+                        .filter(column => column.Visible)
+                        .map(column => column.ItemCostKey)
+                }
             }
         })
     }

@@ -30,10 +30,10 @@
                 </mat-menu>
             </mat-header-cell>
             <mat-cell *matCellDef="let element">
-                <app-edit-numeric (outValue)="changeTotalSumPlan($event, element)"
-                                  *ngIf="column.ItemCostKey === 'TotalSumPlan';
+                <vlt-edit-numeric-field (outValue)="changeTotalSumPlan($event, element)"
+                                        *ngIf="column.ItemCostKey === 'TotalSumPlan';
                         else elseBlock"
-                                  [value]="element[column.ItemCostKey]"></app-edit-numeric>
+                                        [value]="element[column.ItemCostKey]"></vlt-edit-numeric-field>
                 <ng-template #elseBlock>{{ element[column.ItemCostKey]}}</ng-template>
             </mat-cell>
         </ng-container>

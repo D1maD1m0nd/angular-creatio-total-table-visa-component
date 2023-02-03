@@ -49,7 +49,8 @@ import {VisaCostTableComponent} from "./components/visa-cost-table/visa-cost-tab
         MatInputModule
     ],
     providers: [],
-    bootstrap: [AppComponent],
+    // bootstrap: [AppComponent],
+    entryComponents: [VltSummaryVisaCostComponent]
 })
 export class AppModule implements DoBootstrap {
     constructor(private injector: Injector) {
