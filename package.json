@@ -6,6 +6,9 @@
         "start": "ng serve",
         "build": "ng build",
         "build:Prod": "ng build --configuration production",
+        "build-ng-element": "ng build --output-hashing none && node build.js",
+        "build-ng-element:prod": "ng build --configuration production --output-hashing none && node build.js",
+        "deploy-firebase": "ng build --configuration production && firebase deploy",
         "watch": "ng build --watch --configuration development",
         "test": "ng test"
     },
