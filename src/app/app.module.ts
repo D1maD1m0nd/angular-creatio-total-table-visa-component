@@ -5,7 +5,6 @@ import {HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSortModule} from '@angular/material/sort';
 import {EditNumericComponent} from './components/edit-numeric/edit-numeric.component';
-import {ɵEmptyOutletComponent} from "@angular/router";
 import {MatTableModule} from "@angular/material/table";
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {FilteredColumnsComponent} from "./components/filteredcolumns/filteredcolumns.component";
@@ -37,7 +36,6 @@ import {MatInputModule} from "@angular/material/input";
         MatSortModule,
         MatTableModule,
         DragDropModule,
-        ɵEmptyOutletComponent,
         MatCheckboxModule,
         MatCardModule,
         MatExpansionModule,
@@ -48,7 +46,7 @@ import {MatInputModule} from "@angular/material/input";
         MatInputModule
     ],
     providers: [],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
 })
 export class AppModule {
 
