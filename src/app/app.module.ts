@@ -21,6 +21,7 @@ import {createCustomElement} from '@angular/elements';
 import {VltSummaryVisaCostComponent} from "./components/summary-visa-cost/vlt-summary-visa-cost.component";
 import {TitleVisaComponent} from "./components/title-visa/title-visa.component";
 import {VisaCostTableComponent} from "./components/visa-cost-table/visa-cost-table.component";
+import {CookieService} from "ngx-cookie-service";
 
 @NgModule({
     declarations: [
@@ -48,8 +49,8 @@ import {VisaCostTableComponent} from "./components/visa-cost-table/visa-cost-tab
         MatFormFieldModule,
         MatInputModule
     ],
-    providers: [],
-    // bootstrap: [AppComponent],
+    providers: [CookieService],
+    //bootstrap: [AppComponent],
     entryComponents: [VltSummaryVisaCostComponent]
 })
 export class AppModule implements DoBootstrap {

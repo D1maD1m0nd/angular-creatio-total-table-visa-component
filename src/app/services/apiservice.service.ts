@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
 import {ErrorService} from "./error.service";
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, tap, throwError} from "rxjs";
 import {IVisaCostSummary} from "../data/model/response/VisaCostSummary";
 import {ICostVisaSaveData} from "../data/model/request/ICostVisaSaveData";
 import {ICostVisaSaveItem} from "../data/model/request/ICostVisaSaveItem";
+import {CookieService} from "ngx-cookie-service";
 
 @Injectable({
     providedIn: 'root'
@@ -13,10 +14,18 @@ export class ApiService {
     VisaCostSummary: IVisaCostSummary
     VisaCostSummarySave: Map<string, number> = new Map();
     BASE_URL = 'https://fotodom.site:489/0'
+    BPM_CSRF_TOKEN: string = "80"
 
     constructor(
         private http: HttpClient,
-        private errorService: ErrorService) {
+        private errorService: ErrorService,
+        private cookieService: CookieService) {
+        const token = this.cookieService.get('BPMCSRF');
+        this.BPM_CSRF_TOKEN = this.cookieService.get('BPMCSRF');
+        if (token) {
+            this.BPM_CSRF_TOKEN = token;
+        }
+        console.log(token);
     }
 
     AddSaveData(id: string, sum: number) {
@@ -28,7 +37,7 @@ export class ApiService {
         this.VisaCostSummarySave.clear();
     }
 
-    PostSaveDataBudgetDetail(): Observable<any> {
+    PrepareDataBeforeSave(): ICostVisaSaveData {
         const saveDataArray: ICostVisaSaveItem[] = [];
         this.VisaCostSummarySave.forEach((value, key) => {
             saveDataArray.push({
@@ -37,12 +46,22 @@ export class ApiService {
                 }
             );
         });
-        const CostVisaSaveData: ICostVisaSaveData = {
+        return {
             CostItemData: saveDataArray
-        }
+        };
+    }
+
+    PostSaveDataBudgetDetail(): Observable<any> {
+        const data = this.PrepareDataBeforeSave()
+        const headers = new HttpHeaders().set(
+            'BPMCSRF', this.BPM_CSRF_TOKEN
+        );
         return this.http.post(
-            `${this.BASE_URL}/ServiceModel/VisaCostItemWebService.svc/UpdateRecordsDetailBudgetSum`,
-            CostVisaSaveData
+            `${this.BASE_URL}/rest/VisaCostItemWebService/UpdateRecordsDetailBudgetSum`,
+            data,
+            {
+                headers: headers
+            }
         );
     }
     GetVisaSummary(YearId: string | null, BrandId: string | null): Observable<IVisaCostSummary> {

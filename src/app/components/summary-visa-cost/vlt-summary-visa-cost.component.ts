@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {IVisaCostSummary} from "../../data/model/response/VisaCostSummary";
 import {ApiService} from "../../services/apiservice.service";
-import {ConverterService} from "../../services/converter.service";
 
 @Component({
     selector: 'vlt-summary-visa-cost-component',
@@ -9,12 +8,17 @@ import {ConverterService} from "../../services/converter.service";
     styleUrls: ['./vlt-summary-visa-cost.component.css']
 })
 export class VltSummaryVisaCostComponent {
-    @Input("visa-cost-summary") VisaCostSummaryInput: string
-    @Output() VisaCostSummarySaveEmitter = new EventEmitter<Map<string, number>>();
     VisaCostSummary: IVisaCostSummary
+
+    @Input("visa-cost-summary")
+    public set value(value: string) {
+        this.VisaCostSummary = JSON.parse(value);
+    }
+
+    @Output() VisaCostSummarySaveEmitter = new EventEmitter<Map<string, number>>();
     VisaCostSummarySave: Map<string, number> = new Map<string, number>()
 
-    constructor(public apiService: ApiService, public converterService: ConverterService) {
+    constructor(public apiService: ApiService) {
     }
 
     SendSaveDataIntoServer() {
@@ -22,14 +26,5 @@ export class VltSummaryVisaCostComponent {
             console.log(i)
             this.apiService.ClearSaveData()
         })
-    }
-
-    ngOnInit(): void {
-        console.log("ngOnInit");
-        this.converterService.VisaCostSummary$.subscribe((i) => {
-            console.log(i)
-            this.VisaCostSummary = i
-        });
-        this.converterService.convert(this.VisaCostSummaryInput);
     }
 }
