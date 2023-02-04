@@ -46,6 +46,27 @@
                             ],
                             "outputHashing": "all"
                         },
+                        "production-creatio": {
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                }
+                            ],
+                            "outputHashing": "all",
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.creatio.ts"
+                                }
+                            ]
+                        },
                         "development": {
                             "buildOptimizer": false,
                             "optimization": false,
