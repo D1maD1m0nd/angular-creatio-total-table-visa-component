@@ -20,10 +20,14 @@ export class ApiService {
         private http: HttpClient,
         private errorService: ErrorService,
         private cookieService: CookieService) {
+        const url = window.location['origin'];
         const token = this.cookieService.get('BPMCSRF');
         this.BPM_CSRF_TOKEN = this.cookieService.get('BPMCSRF');
         if (token) {
             this.BPM_CSRF_TOKEN = token;
+        }
+        if (url) {
+            this.BASE_URL = `${url}/0`
         }
         console.log(token);
     }
@@ -51,11 +55,15 @@ export class ApiService {
         };
     }
 
-    PostSaveDataBudgetDetail(): Observable<any> {
-        const data = this.PrepareDataBeforeSave()
-        const headers = new HttpHeaders().set(
+    GetHeaders(): HttpHeaders {
+        return new HttpHeaders().set(
             'BPMCSRF', this.BPM_CSRF_TOKEN
         );
+    }
+
+    PostSaveDataBudgetDetail(): Observable<any> {
+        const data = this.PrepareDataBeforeSave()
+        const headers = this.GetHeaders()
         return this.http.post(
             `${this.BASE_URL}/rest/VisaCostItemWebService/UpdateRecordsDetailBudgetSum`,
             data,
@@ -64,11 +72,16 @@ export class ApiService {
             }
         );
     }
+
     GetVisaSummary(YearId: string | null, BrandId: string | null): Observable<IVisaCostSummary> {
-        return this.http.post<IVisaCostSummary>(`${this.BASE_URL}/ServiceModel/VisaCostItemWebService.svc/GetVisaItems`, {
-            "yearBudgetId": YearId,
-            "brandBudgetId": BrandId
-        }).pipe(
+        const headers = this.GetHeaders();
+        return this.http.post<IVisaCostSummary>(`${this.BASE_URL}/rest/VisaCostItemWebService/GetVisaItems`, {
+                "yearBudgetId": YearId,
+                "brandBudgetId": BrandId,
+            },
+            {
+                headers: headers
+            }).pipe(
             tap(VisaCost => this.VisaCostSummary = VisaCost),
             catchError(this.errorHandler.bind(this))
         );
