@@ -1,35 +1,34 @@
 import {Injectable} from '@angular/core';
 import {ErrorService} from "./error.service";
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
-import {catchError, Observable, tap, throwError} from "rxjs";
+import {catchError, Observable, throwError} from "rxjs";
 import {IVisaCostSummary} from "../data/model/response/VisaCostSummary";
 import {ICostVisaSaveData} from "../data/model/request/ICostVisaSaveData";
 import {ICostVisaSaveItem} from "../data/model/request/ICostVisaSaveItem";
 import {CookieService} from "ngx-cookie-service";
+import {environment} from "../../environments/environment";
+import {BuildTypes} from "../../environments/BuildTypes";
+import {ICostVisaRequestData} from "../data/model/request/ICostVisaRequestData";
 
 @Injectable({
     providedIn: 'root'
 })
 export class ApiService {
-    VisaCostSummary: IVisaCostSummary
     VisaCostSummarySave: Map<string, number> = new Map();
-    BASE_URL = 'https://fotodom.site:489/0'
+    BASE_URL = environment.apiUrl
     BPM_CSRF_TOKEN: string = "80"
 
     constructor(
         private http: HttpClient,
         private errorService: ErrorService,
         private cookieService: CookieService) {
-        const url = window.location['origin'];
-        const token = this.cookieService.get('BPMCSRF');
-        this.BPM_CSRF_TOKEN = this.cookieService.get('BPMCSRF');
-        if (token) {
+        if (environment.buildType == BuildTypes.CREATIO) {
+            const url = window.location['origin'];
+            const token = this.cookieService.get('BPMCSRF');
             this.BPM_CSRF_TOKEN = token;
-        }
-        if (url) {
             this.BASE_URL = `${url}/0`
+            console.log(token);
         }
-        console.log(token);
     }
 
     AddSaveData(id: string, sum: number) {
@@ -41,7 +40,7 @@ export class ApiService {
         this.VisaCostSummarySave.clear();
     }
 
-    PrepareDataBeforeSave(): ICostVisaSaveData {
+    private PrepareDataBeforeSave(): ICostVisaSaveData {
         const saveDataArray: ICostVisaSaveItem[] = [];
         this.VisaCostSummarySave.forEach((value, key) => {
             saveDataArray.push({
@@ -55,17 +54,27 @@ export class ApiService {
         };
     }
 
-    GetHeaders(): HttpHeaders {
-        return new HttpHeaders().set(
-            'BPMCSRF', this.BPM_CSRF_TOKEN
-        );
+    private GetHeaders(): HttpHeaders {
+        if (environment.buildType == BuildTypes.CREATIO) {
+            return new HttpHeaders().set(
+                'BPMCSRF', this.BPM_CSRF_TOKEN
+            );
+        } else {
+            return new HttpHeaders()
+        }
     }
 
     PostSaveDataBudgetDetail(): Observable<any> {
+        let url;
+        if (environment.buildType == BuildTypes.CREATIO) {
+            url = `${this.BASE_URL}/rest/VisaCostItemWebService/UpdateRecordsDetailBudgetSum`
+        } else {
+            url = `${this.BASE_URL}/ServiceModel/VisaCostItemWebService.svc/UpdateRecordsDetailBudgetSum`
+        }
         const data = this.PrepareDataBeforeSave()
         const headers = this.GetHeaders()
         return this.http.post(
-            `${this.BASE_URL}/rest/VisaCostItemWebService/UpdateRecordsDetailBudgetSum`,
+            url,
             data,
             {
                 headers: headers
@@ -74,17 +83,26 @@ export class ApiService {
     }
 
     GetVisaSummary(YearId: string | null, BrandId: string | null): Observable<IVisaCostSummary> {
+        let url;
+        if (environment.buildType == BuildTypes.CREATIO) {
+            url = `${this.BASE_URL}/rest/VisaCostItemWebService/GetVisaItems`
+        } else {
+            url = `${this.BASE_URL}/ServiceModel/VisaCostItemWebService.svc/GetVisaItems`
+        }
+        const data: ICostVisaRequestData = {
+            yearBudgetId: YearId,
+            brandBudgetId: BrandId
+        };
         const headers = this.GetHeaders();
-        return this.http.post<IVisaCostSummary>(`${this.BASE_URL}/rest/VisaCostItemWebService/GetVisaItems`, {
-                "yearBudgetId": YearId,
-                "brandBudgetId": BrandId,
-            },
+        return this.http.post<IVisaCostSummary>(
+            url,
+            data,
             {
                 headers: headers
-            }).pipe(
-            tap(VisaCost => this.VisaCostSummary = VisaCost),
-            catchError(this.errorHandler.bind(this))
-        );
+            })
+            .pipe(
+                catchError(this.errorHandler.bind(this))
+            );
         // "yearBudgetId": "42533c5f-b173-4386-a1d9-8e02e5b91d4d",
         //     "brandBudgetId": "f4c9e1ef-167e-4aef-b2c1-56950486df79"
     }

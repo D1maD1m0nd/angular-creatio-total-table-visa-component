@@ -50,7 +50,7 @@ import {CookieService} from "ngx-cookie-service";
         MatInputModule
     ],
     providers: [CookieService],
-    //bootstrap: [AppComponent],
+    bootstrap: [AppComponent],
     entryComponents: [VltSummaryVisaCostComponent]
 })
 export class AppModule implements DoBootstrap {

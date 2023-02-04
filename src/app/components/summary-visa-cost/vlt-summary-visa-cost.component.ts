@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {IVisaCostSummary} from "../../data/model/response/VisaCostSummary";
 import {ApiService} from "../../services/apiservice.service";
 
@@ -7,18 +7,14 @@ import {ApiService} from "../../services/apiservice.service";
     templateUrl: './vlt-summary-visa-cost.component.html',
     styleUrls: ['./vlt-summary-visa-cost.component.css']
 })
-export class VltSummaryVisaCostComponent {
+export class VltSummaryVisaCostComponent implements OnInit {
     VisaCostSummary: IVisaCostSummary
+    @Input('year') year: string
+    @Input("brand") brand: string
 
-    @Input("visa-cost-summary")
-    public set value(value: string) {
-        this.VisaCostSummary = JSON.parse(value);
-    }
-
-    @Output() VisaCostSummarySaveEmitter = new EventEmitter<Map<string, number>>();
     VisaCostSummarySave: Map<string, number> = new Map<string, number>()
 
-    constructor(public apiService: ApiService) {
+    constructor(private apiService: ApiService) {
     }
 
     SendSaveDataIntoServer() {
@@ -26,5 +22,15 @@ export class VltSummaryVisaCostComponent {
             console.log(i)
             this.apiService.ClearSaveData()
         })
+    }
+
+    ngOnInit(): void {
+        console.log("ngOnInit")
+        this.apiService
+            .GetVisaSummary(this.year, this.brand)
+            .subscribe((item) => {
+                console.log(item)
+                this.VisaCostSummary = item
+            });
     }
 }
