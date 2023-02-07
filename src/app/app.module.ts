@@ -22,6 +22,7 @@ import {VltSummaryVisaCostComponent} from "./components/summary-visa-cost/vlt-su
 import {TitleVisaComponent} from "./components/title-visa/title-visa.component";
 import {VisaCostTableComponent} from "./components/visa-cost-table/visa-cost-table.component";
 import {CookieService} from "ngx-cookie-service";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -47,10 +48,11 @@ import {CookieService} from "ngx-cookie-service";
         MatMenuModule,
         MatButtonModule,
         MatFormFieldModule,
-        MatInputModule
+        MatInputModule,
+        FormsModule
     ],
     providers: [CookieService],
-    bootstrap: [AppComponent],
+    //bootstrap: [AppComponent],
     entryComponents: [VltSummaryVisaCostComponent]
 })
 export class AppModule implements DoBootstrap {

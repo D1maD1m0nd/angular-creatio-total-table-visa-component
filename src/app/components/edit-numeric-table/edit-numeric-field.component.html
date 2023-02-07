@@ -5,6 +5,7 @@
         matInput
         type="number"
         placeholder="0"
-        [value]="value.toString()">
+        [(ngModel)]="value"
+        (focusout)="saveNumData(value.toString())">
     <span matTextPrefix>$&nbsp;</span>
 </mat-form-field>

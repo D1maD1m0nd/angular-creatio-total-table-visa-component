@@ -11,6 +11,7 @@ export class EditNumericFieldComponent implements OnInit {
     @Output() outValue = new EventEmitter<number>();
 
     saveNumData(value: string) {
+        console.log(value)
         let number = Number(value);
         if (isNaN(number)) {
             number = 0.0

@@ -33,6 +33,9 @@ export class VisaCostTableComponent implements OnInit {
     }
 
     changeTotalSumPlan(value: number, item: ICostItem) {
+        console.log("changeTotalSumPlan")
+        console.log(value)
+        console.log(item.TotalSumPlan)
         if (item.TotalSumPlan !== value) {
             item.TotalSumPlan = value
             this.apiService.AddSaveData(item.DetailBudgetId, value);

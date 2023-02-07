@@ -16,7 +16,7 @@ import {ICostVisaRequestData} from "../data/model/request/ICostVisaRequestData";
 export class ApiService {
     VisaCostSummarySave: Map<string, number> = new Map();
     BASE_URL = environment.apiUrl
-    BPM_CSRF_TOKEN: string = "80"
+    BPM_CSRF_TOKEN: string
 
     constructor(
         private http: HttpClient,
@@ -84,6 +84,7 @@ export class ApiService {
 
     GetVisaSummary(YearId: string | null, BrandId: string | null): Observable<IVisaCostSummary> {
         let url;
+        console.log()
         if (environment.buildType == BuildTypes.CREATIO) {
             url = `${this.BASE_URL}/rest/VisaCostItemWebService/GetVisaItems`
         } else {
